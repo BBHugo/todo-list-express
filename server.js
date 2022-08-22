@@ -5,7 +5,7 @@ const PORT = 2121
 require('dotenv').config()
 
 
-let db,
+let db, //******Type "node server.js" in Terminal to begin server, will connect to the 'todo' Database on our MongoDB(It's in Cluster0)****
     dbConnectionStr = process.env.DB_STRING,
     dbName = 'todo'
 
