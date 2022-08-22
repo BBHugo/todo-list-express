@@ -1,47 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Todo List: </h1>
-    <ul class="todoItems">
-    <% for(let i=0; i < items.length; i++) {%>
-        <li class="item">
-            <% if(items[i].completed === true) {%>
-                <span class='completed'><%= items[i].thing %></span>
-            <% }else{ %>
-                <span><%= items[i].thing %></span>
-            <% } %>    
-            <span class='fa fa-trash'></span>
-        </li>
-    <% } %>
-    </ul>
+<!DOCTYPE html> <!--Telling the browser what type of document we're displaying-->
+<html lang="en"> <!--Starting our HTML Tag. Setting our language as English-->
+<head> <!--Starting our head tag to store our meta data-->
+    <meta charset="UTF-8"> <!--Indicates what character set should be used-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Indicating compatibility. Tells Microsoft browsers which version of IE to render the page as.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Setting the default viewing area width that the code should be displayed as, sets it as the width of whatever device is being used. We specify width and not height because scrolling up and down is perfectly normal for most devices where as the width should probably be set to whatever is being used for nicer use.-->
+    <title>Todo List</title> <!--Displays the name of this page, will display in the tab of the browser-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!--Link to a stylesheet, Creating a link to the font-awesome library which is the source for many of our icons. Allowing us to use the icons-->
+    <link rel="stylesheet" href="css/style.css"> <!--Link to a stylesheet, which links to our local css located in the "public" folder-->
+</head> <!--Closing out our head tag-->
 
-    <h2>Left to do: <%= left %></h2>
+<body> <!--Might be a typo-->
+    <!DOCTYPE html> <!--Might be a typo-->
+<html lang="en"> <!--Might be a typo-->
+<head> <!--Might be a typo-->
+    <meta charset="UTF-8"> <!--Might be a typo-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Might be a typo-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Might be a typo-->
+    <title>Document</title> <!--Might be a typo-->
+</head> <!--Might be a typo-->
+<body> <!--main section for content displayed-->
 
-    <h2>Add A Todo:</h2>
+    <h1>Todo List: </h1> <!-- Main title for page -->
 
-    <form action="/addTodo" method="POST">
-        <input type="text" placeholder="Thing To Do" name="todoItem">
-        <input type="submit">
-    </form>
+    <ul class="todoItems"> <!--The parent element for our unordered list which embedds the li with an assigned class-->
+    <% for(let i=0; i < items.length; i++) {%> <!--Embedded javascript (EJS), the <% # %> allows us to add js. Starts a for loop-->
+        <li class="item"> <!--Creating a list item within the ul with class of item-->
+            <% if(items[i].completed === true) {%> <!--More EJS, which checks to see if the "completed" property in object from the array (which is pulled with items[i]) is true, if it is, it will execute the code in the following line.-->
+                <span class='completed'><%= items[i].thing %></span> <!-- Creates an inline element if the above is true, pulling a an item of "thing" from an array, which will create the HTML with the item name, giving it the class of 'completed' (This class is given because it has code in the cs file which alters it)-->
+            <% }else{ %> <!--If a property with the completed item isn't true, then we do this EJS, which will insert the below HTML/EJS to our page-->
+                <span><%= items[i].thing %></span> <!-- Inline element  which will insert whatever text was gotten from the form in the page. Note: this object is brought from the db, and displays the "thing" method attached to it-->
+            <% } %>    <!--Closes our previous EJS statement-->
+            <span class='fa fa-trash'></span> <!--Creates an inline element which adds the fontawesome trashcan icon (Created in HTML and edited with cs)-->
+        </li> <!--Closing our list item-->
+    <% } %> <!--Closing our for loop-->
+    </ul> <!--Closing our unordered list-->
+
+    <h2>Left to do: <%= left %></h2> <!--Adds our h2 hardcoded "Left to Do" in our page and adds (w/ ejs) count of how many tasks are left without the class of completed, displaying it as a number. "left" is the variable for counting the remaining uncompleted items-->
+
+    <h2>Add A Todo:</h2> <!--Hardcoded HTML adding "Add a Todo:" to the dom-->
+
+    <form action="/addTodo" method="POST"> <!--begins to create our form which will ultimately add new items to the lists. With a POST method that is going to route given which is "/addTodo". POST in CRUD is the C(Create), creating our new item. the action will hit the precise spot which will be listening for this POST method and handle this information properly within our server. NOTE: Form is a way to create POST methods, it CANNOT create a PUT, it's not built into form code-->
+        <input type="text" placeholder="Thing To Do" name="todoItem"> <!--Creating an input field which will allow us to input text(type). The default text within this box is the placeholder which is "Thing To Do", appearing if the box is empty (Typically before the user types). the input text is given a name (todoItem) for later use-->
+        <input type="submit"> <!--Gives the form a submit button. Before, we would create a button, but the form function has a built in type of submit which will create our button which will push up our text to the server-->
+    </form> <!--Closing our form function-->
     
 
-    <script src='js/main.js'></script>
-</body>
-</html>
+    <script src='js/main.js'></script> <!--Connects our JavaScript file to this HTML-->
+</body> <!--Closing our body tag-->
+</html> <!-- Clsoing our html tag-->
