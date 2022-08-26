@@ -72,3 +72,5 @@ async function markUnComplete(){ //Beginning an asynchronous function called Mar
         console.log(err) //Console logs the error that was caught
     } //Closing catch block
 } //closing async function
+
+//A NOTE FOR THE .ENV FILE: Things that go into the .env is private info, things we want to hide. Port value, because you can reference it from our server.js. Ultimately it will be in the gitignore.
